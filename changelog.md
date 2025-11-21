@@ -9,16 +9,16 @@ This changelog represents the project change events during the project developme
 Theory Estimates of the CVaR"
 - A importância da fundamentação estatística foi perceber que não podemos estimar realmente o CVAR em métodos simples, onde há poucos pontos para analisar na cauda da distribuição
 - Estimar melhor o CVAR nos ajudaria a aplicar em estratégias quantitativas
-
+---
 - 15/10/2025
 - Reunião:
 - Foi discutido maneiras para aplicar melhor as métricas de risco
 - Discutido outras estratégias quantitativas para aplicar o projeto, multi-arm-bandid ou long/short strategy
-
+---
 - 5/11/2025
 - Discussão via chat:
 - Selecionar materiais para aprofundamento de análise de risco
-
+---
 - 21/11/2025
 - Reunião:
 - Análise de risco definida, iniciando aprofundamento
