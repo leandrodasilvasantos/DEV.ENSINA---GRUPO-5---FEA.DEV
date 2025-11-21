@@ -21,7 +21,7 @@ Theory Estimates of the CVaR"
 ---
 - 21/11/2025
 - Reunião:
-- Análise de risco definida, iniciando aprofundamento
+- Análise de risco definida, iniciando aprofundamento, playlist, cursos no datacamp, livro "quantitativa trading",)
 - Definido roteiro do projeto -
 - 1) Análise profunda de risco
   2) Selecionar estratégias quantitativas de acordo com as métricas analisadas
