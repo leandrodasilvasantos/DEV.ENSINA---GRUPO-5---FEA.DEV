@@ -32,6 +32,7 @@ Theory Estimates of the CVaR"
 - 29/11/2025
 - Reunião:
 - Definido tópicos para risco:
+- Primeiro realizar o curso -> https://app.datacamp.com/learn/skill-tracks/finance-fundamentals-in-python
 - Conceitos básicos de finanças; Mensuração de risco; Otimização de carteiras; Risco sistemático e 
 - risco diversificável; Análise de média variância; Fronteira Eficiente; Modelos de apreçamento: CAPM, APT. Princípios de mercados de derivativos. Aplicações a problemas reais.
  
