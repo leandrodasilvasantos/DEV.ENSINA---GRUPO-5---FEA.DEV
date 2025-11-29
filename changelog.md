@@ -28,3 +28,14 @@ Theory Estimates of the CVaR"
   3) Iniciar algoritmo, programação
   4) Backtesting
   5) Resultados
+---
+- 29/11/2025
+- Reunião:
+- Definido tópicos para risco:
+- Conceitos básicos de finanças; Mensuração de risco; Otimização de carteiras; Risco sistemático e 
+- risco diversificável; Análise de média variância; Fronteira Eficiente; Modelos de apreçamento: CAPM, APT. Princípios de mercados de derivativos. Aplicações a problemas reais.
+ 
+Concepts of finance; Risk measurement; Portfolio optimization; Systematic and unsystematic risk; Mean-variance analysis; Efficient frontier; Pricing models: CAPM, APT. Principles of derivative markets. Applications to real problems.
+
+- Possível aplicação a fundos de investmentos
+
