@@ -39,7 +39,7 @@ Theory Estimates of the CVaR"
 Concepts of finance; Risk measurement; Portfolio optimization; Systematic and unsystematic risk; Mean-variance analysis; Efficient frontier; Pricing models: CAPM, APT. Principles of derivative markets. Applications to real problems.
 
 - Possível aplicação a fundos de investmentos
-
+---
 - 07/12/2025
 - Participação de Felipe
 - 1) Definido material em conjunto para estudar riscos -> J.P Morgan
