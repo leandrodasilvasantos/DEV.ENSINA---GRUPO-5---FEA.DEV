@@ -40,3 +40,8 @@ Concepts of finance; Risk measurement; Portfolio optimization; Systematic and un
 
 - Possível aplicação a fundos de investmentos
 
+- 07/12/2025
+- Participação de Felipe
+- 1) Definido material em conjunto para estudar riscos -> J.P Morgan
+  2) Em paralelo, Aplicar modelo pronto (Markowitz) e aplicar riscos para otimização de portfólio
+
