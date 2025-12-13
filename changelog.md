@@ -44,4 +44,12 @@ Concepts of finance; Risk measurement; Portfolio optimization; Systematic and un
 - Participação de Felipe
 - 1) Definido material em conjunto para estudar riscos -> J.P Morgan
   2) Em paralelo, Aplicar modelo pronto (Markowitz) e aplicar riscos para otimização de portfólio
+ 
+---
+- 13/12/2025
+- Sintetização de assuntos de risco estudados
+- Notion -> Estudos dos tópicos em conjuntos
+- Atualizado tópico 1 e 2 para discussão para próxima reunião dia 20/12
+- Tópico 1: Volatilidade, EWMA
+- Tópico 2: Simulação de Monte Carlo, otimização de carteira por Markowitz
 
