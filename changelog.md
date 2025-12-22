@@ -53,3 +53,9 @@ Concepts of finance; Risk measurement; Portfolio optimization; Systematic and un
 - Tópico 1: Volatilidade, EWMA
 - Tópico 2: Simulação de Monte Carlo, otimização de carteira por Markowitz
 
+- ---
+- 21/12/2025
+- Reunião de estudos dos tópicos 1 e 2 (Volatilidade, EWMA e Simulação de Monte Carlo
+- Falta sintetizar mais o assunto de otimização por Markowitz
+- Montada melhor estrutura do projeto
+
