@@ -58,4 +58,10 @@ Concepts of finance; Risk measurement; Portfolio optimization; Systematic and un
 - Reunião de estudos dos tópicos 1 e 2 (Volatilidade, EWMA e Simulação de Monte Carlo
 - Falta sintetizar mais o assunto de otimização por Markowitz
 - Montada melhor estrutura do projeto
+- ---
+- 07/01/2026
+- Reunião separando codigos e tarefas para juntar projeto final
+- Tales com markowitz (matriz de covariância ate o EWMA)
+- Victo com monte carlo até a projeçao
+- Leandro com backtesting
 
