@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+np.random.seed(42)
 # petro e vale (exportadoras), itaú (juros e crédito), renner(pib doméstico/consumo) etc...
 tickers= ['PETR4.SA', 'VALE3.SA', 'ITUB4.SA', 'LREN3.SA', 'WEGE3.SA', 'AXIA3.SA']
 data_inicial = '2015-01-01'
@@ -80,6 +81,8 @@ def calcular_metricas_starr(pesos, ret_esp, cov_mat, n_sim=10000, nu=5):
     Calcula o STARR Ratio usando a distribuição t-Student.
     O parâmetro 'nu' define os graus de liberdade (quanto menor, maior o risco de cauda).
     """
+    np.random.seed(42)
+  #Garantir que o código seja replicável
     # Decomposição de Cholesky para manter as correlações entre ativos
     L = np.linalg.cholesky(cov_mat + np.eye(n_ativos) * 1e-8)
 
@@ -216,14 +219,15 @@ for t in range(n_dias):
         bounds = tuple((0, 1) for _ in range(n_ativos))
 
         def obj(w):
-            r = np.dot(ret_esp_passado, w)
-            v = np.dot(w.T, np.dot(cov_passado, w))
-            return -(r / np.sqrt(v))
+            s, _, _ = calcular_metricas_starr(w, ret_esp_passado, cov_passado)
+            return -s
 
         try:
             res = minimize(obj, pesos_atuais, method='SLSQP', bounds=bounds, constraints=cons)
-            if res.success: pesos_atuais = res.x
-        except: pass
+            if res.success:
+                pesos_atuais = res.x
+        except:
+            pass
 
         precos_hoje = dados.iloc[t].values
         # Se é o primeiro dia do backtest (t == janela_inicial), usamos o caixa inicial
@@ -298,4 +302,59 @@ ax2.grid(True, alpha=0.3)
 plt.tight_layout()
 plt.show()
 
+# ANALISE SOLO DO DRAWDOWN PARA INSIGHTS E CONCLUSÃO
 
+# 1. Garantia de Alinhamento e Cálculo Limpo (Decimal)
+# Recalculamos aqui para garantir que não esteja multiplicado por 100
+ibov_aligned = ibov.loc[equity.index]
+
+# Drawdown Portfólio
+pico_port = equity.cummax()
+dd_port_series = (equity / pico_port) - 1  # Formato decimal (ex: -0.30)
+
+# Drawdown Ibovespa
+pico_ibov = ibov_aligned.cummax()
+dd_ibov_series = (ibov_aligned / pico_ibov) - 1 # Formato decimal (ex: -0.45)
+
+def get_dd_metrics(dd_series, price_series, peak_series):
+    """Extrai valor, data topo, data fundo e duração."""
+    min_val = dd_series.min()
+    data_fundo = dd_series.idxmin()
+
+    # Achar a data do topo exato antes da queda
+    val_pico_ref = peak_series.loc[data_fundo]
+    # Filtra preços até o fundo e pega a última vez que tocou no pico
+    subset = price_series.loc[:data_fundo]
+    data_topo = subset[subset == val_pico_ref].index[-1]
+
+    dias = (data_fundo - data_topo).days
+    return min_val, data_topo, data_fundo, dias
+
+# Extraindo métricas
+m_port = get_dd_metrics(dd_port_series, equity, pico_port)
+m_ibov = get_dd_metrics(dd_ibov_series, ibov_aligned, pico_ibov)
+
+# Montando a Tabela Visual
+print("\n" + "="*80)
+print(f"{'MÉTRICA DE RISCO (DRAWDOWN)':<30} | {'SUA ESTRATÉGIA':^22} | {'IBOVESPA':^22}")
+print("="*80)
+
+# Linha 1: Queda Máxima
+print(f"{'Queda Máxima (MDD)':<30} | {m_port[0]:^22.2%} | {m_ibov[0]:^22.2%}")
+
+# Linha 2: Data do Topo
+print(f"{'Data do Topo (Início)':<30} | {str(m_port[1].date()):^22} | {str(m_ibov[1].date()):^22}")
+
+# Linha 3: Data do Fundo
+print(f"{'Data do Fundo (Pior Momento)':<30} | {str(m_port[2].date()):^22} | {str(m_ibov[2].date()):^22}")
+
+# Linha 4: Duração
+print(f"{'Duração da Queda (Dias)':<30} | {str(m_port[3]) + ' dias':^22} | {str(m_ibov[3]) + ' dias':^22}")
+
+print("-" * 80)
+
+# Linha 5: Delta
+delta_risco = (m_port[0] - m_ibov[0]) * 100
+status = "MELHOR" if delta_risco > 0 else "PIOR"
+print(f"CONCLUSÃO: Sua carteira segurou a queda {abs(delta_risco):.2f} p.p. {status} que o Ibovespa.")
+print("="*80 + "\n")
